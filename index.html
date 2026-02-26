@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>VANZXTP - ELITE GAMESTORE 🥶</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #3b82f6; 
+            --bg: #020617; 
+            --card: rgba(13, 17, 23, 0.9);
+            --ff: #ff4757; --pubg: #ffa502; --bs: #2ed573; --pool: #1e90ff; --reseller: #a855f7;
+        }
+
+        /* ANIMASI BACKGROUND UTAMA */
+        body { 
+            background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding-bottom: 50px; overflow-x: hidden;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-vanz { text-align: center; padding: 30px 20px; }
+        .header-video {
+            width: 180px; height: 180px; object-fit: cover; border-radius: 20px;
+            border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            animation: pulse-rgb 3s linear infinite;
+        }
+        @keyframes pulse-rgb {
+            0% { border-color: #3b82f6; box-shadow: 0 0 20px #3b82f6; }
+            50% { border-color: #ff00ff; box-shadow: 0 0 30px #ff00ff; }
+            100% { border-color: #3b82f6; box-shadow: 0 0 20px #3b82f6; }
+        }
+
+        .tabs-container { display: flex; gap: 10px; overflow-x: auto; padding: 15px; justify-content: flex-start; scrollbar-width: none; max-width: 1000px; margin: 0 auto; }
+        .tab-btn { 
+            background: var(--card); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; 
+            padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: 800; 
+            text-transform: uppercase; font-size: 0.8rem; backdrop-filter: blur(10px); transition: 0.3s; white-space: nowrap;
+        }
+        .tab-btn.active { background: var(--primary); color: #fff; border-color: #00ffff; box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+
+        /* GRID & RGB ANIMATED CARDS */
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 15px; max-width: 1000px; margin: 0 auto; }
+        
+        .product-card { 
+            position: relative;
+            background: var(--card); border-radius: 15px; padding: 10px; display: none; flex-direction: column; overflow: hidden; transition: 0.3s; z-index: 1;
+        }
+        .product-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #00ffff, #ff00ff, #3b82f6);
+            animation: rotateRGB 4s linear infinite; z-index: -2;
+        }
+        .product-card::after {
+            content: ''; position: absolute; inset: 2px; background: #0d1117; border-radius: 13px; z-index: -1;
+        }
+        @keyframes rotateRGB { 100% { transform: rotate(360deg); } }
+
+        .product-card.show { display: flex; animation: zoomIn 0.4s ease forwards; }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        
+        .product-card img { width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; margin-bottom: 8px; position: relative; }
+        .product-card h3 { font-size: 0.65rem; text-align: center; margin: 5px 0 10px; height: 32px; overflow: hidden; color: #e2e8f0; position: relative; }
+        .tag-game { position: absolute; top: 15px; right: 15px; font-size: 0.55rem; padding: 3px 8px; border-radius: 5px; font-weight: 900; z-index: 2; }
+        .buy-btn { background: linear-gradient(90deg, var(--primary), #8b5cf6); color: #fff; font-size: 0.65rem; text-align: center; padding: 8px; border-radius: 7px; font-weight: 800; cursor: pointer; position: relative; }
+
+        /* BENEFIT SECTION */
+        .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
+        .benefit-box { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; }
+        .benefit-box i { font-size: 1.2rem; margin-bottom: 10px; display: block; }
+        .benefit-box h4 { margin: 0; font-size: 0.9rem; font-weight: 800; color: #fff; }
+        .benefit-box p { margin: 5px 0 0; font-size: 0.7rem; color: #94a3b8; line-height: 1.4; }
+
+        .footer-section { max-width: 1000px; margin: 40px auto; padding: 0 15px; }
+        .contact-btns { display: flex; gap: 10px; margin-bottom: 25px; }
+        .btn-contact { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 10px; text-decoration: none; color: #fff; font-weight: 800; font-size: 0.85rem; }
+        .btn-wa { background: #2563eb; } .btn-telegram { background: #3b82f6; }
+
+        .payment-method { 
+            background: var(--card); border-radius: 15px; padding: 20px; text-align: center; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .payment-method h4 { font-size: 0.8rem; color: #94a3b8; margin: 0 0 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .payment-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .pay-icon { background: #fff; padding: 5px; border-radius: 5px; width: 55px; height: 28px; display: flex; align-items: center; justify-content: center; }
+        .pay-icon img { max-width: 100%; max-height: 100%; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+        .modal-content { 
+            background: #0f172a; margin: 5% auto; padding: 20px; border-radius: 20px; width: 90%; max-width: 450px; 
+            border: 2px solid var(--primary); position: relative; animation: modalGlow 2s infinite alternate;
+        }
+        @keyframes modalGlow { from { border-color: var(--primary); } to { border-color: #ff00ff; } }
+        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 25px; cursor: pointer; color: #94a3b8; }
+        .user-input-box input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #fff; box-sizing: border-box; outline: none; }
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 15px 0; max-height: 250px; overflow-y: auto; }
+        .price-item { border: 1px solid #334155; padding: 10px; border-radius: 10px; cursor: pointer; text-align: center; background: rgba(255,255,255,0.02); }
+        .price-item.active { border-color: #00ffff; background: rgba(59, 130, 246, 0.2); }
+        #qris-area { display: none; text-align: center; margin-top: 15px; background: #fff; border-radius: 10px; padding: 10px; }
+        #qris-area img { width: 100%; max-width: 250px; display: inline-block; }
+        .btn-tele { display: none; width: 100%; background: #0088cc; color: #fff; padding: 12px; border: none; border-radius: 10px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        .rgb-text { font-weight: 900; font-size: 13px; margin-bottom: 10px; animation: rgb-animation 2s linear infinite; }
+        @keyframes rgb-animation { 0% { color: #ff0000; } 33% { color: #00ff00; } 66% { color: #0000ff; } 100% { color: #ff0000; } }
+
+        @media (max-width: 600px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; } .header-video { width: 140px; height: 140px; } }
+    </style>
+</head>
+<body>
+
+    <div class="header-vanz">
+        <video class="header-video" autoplay loop muted playsinline>
+            <source src="vidio.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="filterGame('all', this)">ALL ITEMS</button>
+        <button class="tab-btn" onclick="filterGame('ff', this)">FREE FIRE</button>
+        <button class="tab-btn" onclick="filterGame('pool', this)">8 BALL POOL</button>
+        <button class="tab-btn" onclick="filterGame('pubg', this)">PUBG</button>
+        <button class="tab-btn" onclick="filterGame('bs', this)">BLOODSTRIKE</button>
+        <button class="tab-btn" onclick="filterGame('reseller', this)" style="border-color: var(--reseller); color: var(--reseller);">OPEN RESELLER</button>
+    </div>
+
+    <div class="product-grid" id="container">
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img1.jpg"><h3>LK Team</h3><div class="buy-btn" onclick="openModal('cheat', 'LK Team')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img2.jpg"><h3>STRICKS BR</h3><div class="buy-btn" onclick="openModal('cheat', 'STRICKS BR')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img3.jpg"><h3>Beyond Cheats</h3><div class="buy-btn" onclick="openModal('cheat', 'Beyond Cheats')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img4.jpg"><h3>XTFFHAX</h3><div class="buy-btn" onclick="openModal('cheat', 'XTFFHAX')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img5.jpg"><h3>BRMODS</h3><div class="buy-btn" onclick="openModal('cheat', 'BRMODS')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img6.jpg"><h3>EAGLE CHEATS</h3><div class="buy-btn" onclick="openModal('cheat', 'EAGLE CHEATS')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img7.jpg"><h3>REAPER X PRO</h3><div class="buy-btn" onclick="openModal('cheat', 'REAPER X PRO')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img8.jpg"><h3>HEX BLADE</h3><div class="buy-btn" onclick="openModal('cheat', 'HEX BLADE')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img9.jpg"><h3>ELEVEN V3</h3><div class="buy-btn" onclick="openModal('cheat', 'ELEVEN V3')">BELI</div></div>
+        
+        <div class="product-card pool show"><span class="tag-game" style="background:var(--pool)">8BP</span><img src="pool1.jpg"><h3>Glass Engine</h3><div class="buy-btn" onclick="openModal('cheat', 'Glass Engine 8BP')">BELI</div></div>
+        <div class="product-card pubg show"><span class="tag-game" style="background:var(--pubg)">PUBG</span><img src="pubg1.jpg"><h3>PUBGM USERCHEAT</h3><div class="buy-btn" onclick="openModal('cheat', 'PUBGM USERCHEAT')">BELI</div></div>
+        <div class="product-card pubg show"><span class="tag-game" style="background:var(--pubg)">PUBG</span><img src="pubg2.jpg"><h3>XTHAX PLUS</h3><div class="buy-btn" onclick="openModal('cheat', 'XTHAX PLUS PUBG')">BELI</div></div>
+        <div class="product-card bs show"><span class="tag-game" style="background:var(--bs)">BS</span><img src="bs1.jpg"><h3>PutraModz BS</h3><div class="buy-btn" onclick="openModal('cheat', 'PutraModz Bloodstrike')">BELI</div></div>
+        
+        <div class="product-card reseller show"><span class="tag-game" style="background:var(--reseller)">WEB 1</span><img src="reseller1.jpg"><h3>GET CIT 12 (RES/OWNER)</h3><div class="buy-btn" onclick="openModal('web1', 'GET CIT 12 (WEB 1)')">CEK HARGA</div></div>
+        <div class="product-card reseller show"><span class="tag-game" style="background:var(--reseller)">WEB 2</span><img src="reseller2.jpg"><h3>GET CIT 7/8 (RES/OWNER)</h3><div class="buy-btn" onclick="openModal('web2', 'GET CIT 7/8 (WEB 2)')">CEK HARGA</div></div>
+    </div>
+
+    <div class="footer-section">
+        <div class="benefit-grid">
+            <div class="benefit-box">
+                <i class="fa-solid fa-dollar-sign" style="color: #2ed573;"></i>
+                <h4>Harga Termurah</h4>
+                <p>Harga ramah & kompetitif</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fa-solid fa-bolt" style="color: #ffa502;"></i>
+                <h4>Proses Kilat</h4>
+                <p>Fast respon & pengerjaan cepat</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fa-solid fa-lock" style="color: #ffa502;"></i>
+                <h4>Aman & Terpercaya</h4>
+                <p>Trusted seller & aman</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fa-solid fa-clock" style="color: #fff;"></i>
+                <h4>Open 24 Jam</h4>
+                <p>Siap melayani kapan saja</p>
+            </div>
+        </div>
+
+        <div class="contact-btns">
+            <a href="https://wa.me/62812345678" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/Cek121212" target="_blank" class="btn-contact btn-telegram"><i class="fa-brands fa-telegram"></i> Telegram</a>
+        </div>
+
+        <div class="payment-method">
+            <h4>Payment Method</h4>
+            <div class="payment-flex">
+                <div class="pay-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg"></div>
+                <div class="pay-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg"></div>
+                <div class="pay-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg"></div>
+                <div class="pay-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg"></div>
+                <div class="pay-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Logo_ShopeePay.svg"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="text-align:center; color: var(--primary); font-size: 16px;">PILIH PAKET</h2>
+            <div class="user-input-box">
+                <p style="font-size: 11px; font-weight: bold; color: #94a3b8; margin-bottom: 5px;">REQUEST USERNAME RANDOM:</p>
+                <input type="text" id="reqUser" placeholder="Masukkan Username...">
+            </div>
+            <div class="price-grid" id="priceGrid"></div>
+            <button id="showQris" style="width:100%; padding:15px; border-radius:10px; background:var(--primary); color:#fff; border:none; font-weight:bold; cursor:pointer;" onclick="displayQris()">BAYAR VIA QRIS</button>
+            <div id="qris-area">
+                <p class="rgb-text">TOLONG KIRIM BUKTI TF UNTUK KONFIRMASI KE ADMIN</p>
+                <img src="qris.jpg">
+            </div> 
+            <button id="btnConfirm" class="btn-tele" onclick="sendTele()">KONFIRMASI KE TELEGRAM</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedDuration = "";
+        let selectedProductName = ""; 
+
+        const prices = {
+            cheat: [{d:'1 Day', p:'10k/1$'},{d:'3 Day', p:'30k/2$'},{d:'5 Day', p:'40k/3$'},{d:'7 Day', p:'50k/4$'},{d:'10 Day', p:'60k/5$'},{d:'15 Day', p:'70k/6$'},{d:'30 Day', p:'100k/10$'},{d:'365 Day', p:'300k/25$'}],
+            web1: [{d:'Reseller 15 Day', p:'100k/8$'},{d:'Reseller 30 Day', p:'150k/10$'},{d:'Reseller Season', p:'300k/20$'},{d:'Admin Season', p:'500k/35$'},{d:'Owner 30D', p:'800k/41$'}],
+            web2: [{d:'Reseller Lifetime', p:'150k/10$'},{d:'Owner Lifetime', p:'300k/20$'}],
+        };
+
+        function filterGame(category, btn) {
+            const cards = document.querySelectorAll('.product-card');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active')); btn.classList.add('active');
+            cards.forEach(card => (category === 'all' || card.classList.contains(category)) ? card.classList.add('show') : card.classList.remove('show'));
+        }
+
+        function openModal(type, name) {
+            selectedProductName = name;
+            const grid = document.getElementById('priceGrid'); grid.innerHTML = "";
+            prices[type].forEach(item => {
+                const div = document.createElement('div'); div.className = "price-item";
+                div.innerHTML = `<b>${item.d}</b><span>${item.p}</span>`;
+                div.onclick = () => { document.querySelectorAll('.price-item').forEach(i=>i.classList.remove('active')); div.classList.add('active'); selectedDuration = item.d; };
+                grid.appendChild(div);
+            });
+            document.getElementById('orderModal').style.display = "block";
+        }
+
+        function closeModal() { document.getElementById('orderModal').style.display = "none"; document.getElementById('qris-area').style.display = "none"; document.getElementById('btnConfirm').style.display = "none"; document.getElementById('showQris').style.display = "block"; selectedDuration = ""; selectedProductName = ""; }
+
+        function displayQris() { 
+            const user = document.getElementById('reqUser').value.trim();
+            if(!selectedDuration || !user) return alert("Pilih paket & isi Username dulu pler!"); 
+            document.getElementById('qris-area').style.display = "block"; document.getElementById('btnConfirm').style.display = "block"; document.getElementById('showQris').style.display = "none"; 
+        }
+
+        function sendTele() { 
+            const user = document.getElementById('reqUser').value.trim();
+            const msg = `bang aku udah buy produk: [${selectedProductName}] \nUsername: <${user}> \nPaket: ${selectedDuration}`; 
+            window.open(`https://t.me/Cek121212?text=${encodeURIComponent(msg)}`, '_blank'); 
+        }
+    </script>
+</body>
+</html>

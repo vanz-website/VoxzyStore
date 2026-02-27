@@ -11,9 +11,9 @@
             --bg: #020617; 
             --card: rgba(13, 17, 23, 0.9);
             --ff: #ff4757; --pubg: #ffa502; --bs: #2ed573; --pool: #1e90ff; --reseller: #a855f7;
+            --ml: #facc15;
         }
 
-        /* ANIMASI BACKGROUND UTAMA */
         body { 
             background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #020617);
             background-size: 400% 400%;
@@ -46,7 +46,6 @@
         }
         .tab-btn.active { background: var(--primary); color: #fff; border-color: #00ffff; box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
 
-        /* GRID & RGB ANIMATED CARDS */
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 15px; max-width: 1000px; margin: 0 auto; }
         
         .product-card { 
@@ -71,7 +70,6 @@
         .tag-game { position: absolute; top: 15px; right: 15px; font-size: 0.55rem; padding: 3px 8px; border-radius: 5px; font-weight: 900; z-index: 2; }
         .buy-btn { background: linear-gradient(90deg, var(--primary), #8b5cf6); color: #fff; font-size: 0.65rem; text-align: center; padding: 8px; border-radius: 7px; font-weight: 800; cursor: pointer; position: relative; }
 
-        /* BENEFIT SECTION */
         .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
         .benefit-box { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: left; }
         .benefit-box i { font-size: 1.2rem; margin-bottom: 10px; display: block; }
@@ -92,7 +90,6 @@
         .pay-icon { background: #fff; padding: 5px; border-radius: 5px; width: 55px; height: 28px; display: flex; align-items: center; justify-content: center; }
         .pay-icon img { max-width: 100%; max-height: 100%; }
 
-        /* MODAL */
         .modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { 
             background: #0f172a; margin: 5% auto; padding: 20px; border-radius: 20px; width: 90%; max-width: 450px; 
@@ -124,6 +121,7 @@
     <div class="tabs-container">
         <button class="tab-btn active" onclick="filterGame('all', this)">ALL ITEMS</button>
         <button class="tab-btn" onclick="filterGame('ff', this)">FREE FIRE</button>
+        <button class="tab-btn" onclick="filterGame('ml', this)">MOBILE LEGEND</button>
         <button class="tab-btn" onclick="filterGame('pool', this)">8 BALL POOL</button>
         <button class="tab-btn" onclick="filterGame('pubg', this)">PUBG</button>
         <button class="tab-btn" onclick="filterGame('bs', this)">BLOODSTRIKE</button>
@@ -131,6 +129,15 @@
     </div>
 
     <div class="product-grid" id="container">
+        <div class="product-card ml show">
+            <span class="tag-game" style="background:var(--ml); color:#000;">ML</span>
+            <img src="ml.jpg">
+            <h3>MVP MODS SUPPORT ROOT/NON ROOT</h3>
+            <div class="buy-btn" onclick="openModal('mlbb', 'MVP MODS SUPPORT ROOT/NON ROOT')">BELI</div>
+        </div>
+
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="spotify.jpg"><h3>SPOTIFY</h3><div class="buy-btn" onclick="openModal('cheat', 'SPOTIFY FF')">BELI</div></div>
+        <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="matrix.jpg"><h3>MATRIX</h3><div class="buy-btn" onclick="openModal('cheat', 'MATRIX FF')">BELI</div></div>
         <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img1.jpg"><h3>LK Team</h3><div class="buy-btn" onclick="openModal('cheat', 'LK Team')">BELI</div></div>
         <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img2.jpg"><h3>STRICKS BR</h3><div class="buy-btn" onclick="openModal('cheat', 'STRICKS BR')">BELI</div></div>
         <div class="product-card ff show"><span class="tag-game" style="background:var(--ff)">FF</span><img src="img3.jpg"><h3>Beyond Cheats</h3><div class="buy-btn" onclick="openModal('cheat', 'Beyond Cheats')">BELI</div></div>
@@ -215,6 +222,15 @@
 
         const prices = {
             cheat: [{d:'1 Day', p:'10k/1$'},{d:'3 Day', p:'30k/2$'},{d:'5 Day', p:'40k/3$'},{d:'7 Day', p:'50k/4$'},{d:'10 Day', p:'60k/5$'},{d:'15 Day', p:'70k/6$'},{d:'30 Day', p:'100k/10$'},{d:'365 Day', p:'300k/25$'}],
+            mlbb: [
+                {d:'1 Day', p:'10k'},
+                {d:'3 Day', p:'25k'},
+                {d:'7 Day', p:'35k'},
+                {d:'14 Day', p:'50k'},
+                {d:'30 Day', p:'100k'},
+                {d:'60 Day', p:'155k'},
+                {d:'120 Day', p:'200k'}
+            ],
             web1: [{d:'Reseller 15 Day', p:'100k/8$'},{d:'Reseller 30 Day', p:'150k/10$'},{d:'Reseller Season', p:'300k/20$'},{d:'Admin Season', p:'500k/35$'},{d:'Owner 30D', p:'800k/41$'}],
             web2: [{d:'Reseller Lifetime', p:'150k/10$'},{d:'Owner Lifetime', p:'300k/20$'}],
         };
